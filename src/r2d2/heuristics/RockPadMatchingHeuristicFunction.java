@@ -39,9 +39,12 @@ public class RockPadMatchingHeuristicFunction extends HeuristicFunction {
     private static void getRocksAndPads(char[][] grid, int n, int m, ArrayList<Cell> rocks, ArrayList<Cell> pads) {
         for(int i = 0; i < n; ++i)
             for(int j = 0; j < m; ++j)
-                if(grid[i][j] == R2D2Problem.ROCK)
+            {
+                char c = grid[i][j];
+                if(c == R2D2Problem.ROCK)
                     rocks.add(new Cell(i, j));
-                else if(grid[i][j] == R2D2Problem.PRESSURE_PAD)
+                else if(R2D2Problem.isPressurePad(c))
                     pads.add(new Cell(i, j));
+            }
     }
 }

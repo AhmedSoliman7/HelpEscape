@@ -11,37 +11,41 @@ public class R2D2Problem extends Problem{
 
 	private int n, m;
 	public char[][] grid;
-	
+
 	public static final char ROBOT = 'R', TELEPORT = 'T', EMPTY_CELL = '.';
 	public static final char OBSTACLE = '#', ROCK = 'O', PRESSURE_PAD = 'P';
 	public static final char ROCK_ON_PRESSURE_PAD = 'X', ROBOT_ON_PRESSURE_PAD = 'r', ROBOT_ON_TELEPORT = 'A';
-	
-	
+	private static final String PADS = "XPr";
+
+
 	public R2D2Problem(int N, int M) {
-		
-		int n = N - 2, m = M - 2;
+
 		this.n = N;
 		this.m = M;
-		grid = new char[N][M];
+
+		initializeGrid(N - 2, M - 2);
+		initializeOperators();
+	}
+
+	private void initializeGrid(int n, int m)
+	{
+		grid = new char[this.n][this.m];
 		for(char[] row: grid)
 			Arrays.fill(row, R2D2Problem.EMPTY_CELL);
-
 		Random rand = new Random();
 		int numberOfRocks = rand.nextInt((n * m - 2) / 2 + 1);
-		int numberOfObstacles = rand.nextInt(Math.min(n * m - 2 - numberOfRocks * 2 + 1, Math.max(n, m)));	// TODO: find reasonable values
+		// TODO: find reasonable values
+		int numberOfObstacles = rand.nextInt(Math.min(n * m - 2 - numberOfRocks * 2 + 1, Math.max(n, m)));
 		int[] positions = new int[n * m];
 		for (int i = 0; i < n * m; ++i)
 			positions[i] = i;
 		shuffle(positions, rand);
 		char[] symbols = { 'R', 'T', 'O', 'P', '#' };
 		int[] sizes = { 1, 1, numberOfRocks, numberOfRocks, numberOfObstacles };
-		for (int i = 0, start = 0; i < 5; ++i) {
+		for (int i = 0, start = 0; i < 5; ++i)
 			setPositions(positions, start, start += sizes[i], symbols[i]);
-		}
-		
-		initializeOperators();
 	}
-	
+
 	private void initializeOperators()
 	{
 		operators = new ArrayList<>(4);
@@ -70,6 +74,8 @@ public class R2D2Problem extends Problem{
 			setPosition(positions[i], symbol);
 	}
 
+	public static boolean isPressurePad(char c) { return PADS.indexOf(c) != -1; }
+
 	public String toString() {
 		StringBuilder ret = new StringBuilder();
 		for (int i = 0; i < n; ++i) {
@@ -77,11 +83,11 @@ public class R2D2Problem extends Problem{
 		}
 		return ret.toString();
 	}
-	
+
 	public char[][] getGrid() { return grid; }
-	
+
 	public int[] getDimensions() { return new int[] { n, m }; }
-	
+
 	@Override
 	public ArrayList<Operator> getOperators() { return operators; }
 
@@ -96,15 +102,15 @@ public class R2D2Problem extends Problem{
 					robotPosition = new Cell(i, j);
 				else if(grid[i][j] == R2D2Problem.ROCK)
 					++remRocks;
-				
+
 		return new R2D2State(grid, robotPosition, remRocks);
 	}
 
 	@Override
 	public boolean testGoal(State state) {
-		
+
 		R2D2State st = (R2D2State)state;
 		Cell robotPosition = st.getRobotPosition();
 		return grid[robotPosition.x][robotPosition.y] == 'T';
-	}	
+	}
 }
