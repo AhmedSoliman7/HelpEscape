@@ -37,6 +37,7 @@ public class Main {
 			return new IDS();
 		if(s.equals("UC"))
 			return new UCS();
+
 		return null;
 	}
 }

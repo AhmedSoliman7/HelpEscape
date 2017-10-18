@@ -6,6 +6,7 @@ import general.State;
 
 public class R2D2Operator extends Operator {
 
+	private final int ROCK_PUSH_COST = 5;
 	private int dx, dy;
 	
 	R2D2Operator(int dx, int dy, int cost, String name) { super(cost, name); this.dx = dx; this.dy = dy; }
@@ -93,7 +94,7 @@ public class R2D2Operator extends Operator {
 		State newState = new R2D2State(newGrid, newPos, remRocks);
 		Node newNode = new Node(newState, node, this);
 		if(rockX != -1)
-			newNode.setPathCost(newNode.getPathCost() + 100);		// additional cost for pushing rocks
+			newNode.setPathCost(newNode.getPathCost() + ROCK_PUSH_COST);
 		return newNode;
 	}
 	
