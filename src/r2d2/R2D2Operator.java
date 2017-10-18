@@ -6,7 +6,7 @@ import general.State;
 
 public class R2D2Operator extends Operator {
 
-	private final int ROCK_PUSH_COST = 5;
+	public static final int ROCK_PUSH_COST = 5;
 	private int dx, dy;
 	
 	R2D2Operator(int dx, int dy, int cost, String name) { super(cost, name); this.dx = dx; this.dy = dy; }

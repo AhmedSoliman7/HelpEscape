@@ -1,21 +1,21 @@
 package queue_controllers;
 
+import general.functions.EvaluationFunction;
 import general.Node;
 
 import java.util.Comparator;
-import java.util.function.Function;
 
 public class BestFS extends UCS {
 
-    public BestFS(Function<Node, Integer> evalFunction) {
+    public BestFS(EvaluationFunction evalFunction) {
         super(new InformedNodeComparator(evalFunction));
     }
 
-    private static class InformedNodeComparator<Node> implements Comparator<Node>
+    private static class InformedNodeComparator implements Comparator<Node>
     {
-        Function<Node, Integer> evalFunc;
+        EvaluationFunction evalFunc;
 
-        private InformedNodeComparator(Function<Node, Integer> evalFunc) {
+        private InformedNodeComparator(EvaluationFunction evalFunc) {
             this.evalFunc = evalFunc;
         }
 

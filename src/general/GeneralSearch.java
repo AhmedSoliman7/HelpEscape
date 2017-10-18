@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import queue_controllers.QueueController;
 
 public abstract class GeneralSearch {
-	
-	
+
 	
 	private static ArrayList<Node> expand(Node node, ArrayList<Operator> operators) {
 		ArrayList<Node> expandedNodes = new ArrayList<Node>(1);
@@ -22,18 +21,19 @@ public abstract class GeneralSearch {
 		State initState = problem.getInitialState();
 		
 		queueController.makeQueue(new Node(initState, null, null));
-		
+		int expandedNodes = 0;
 		while(!queueController.isEmpty()) {
 			Node node = queueController.removeFront();
-		
+			++expandedNodes;
 			if(problem.testGoal(node.getState())) 
 			{
 				System.out.println("Goal Reached!");
 				if(visualize)
 				{
 					printSolution(node);
-					System.out.printf("Path Length = %d\n", node.getDepth());
-					System.out.printf("Path Cost = %d\n", node.getPathCost());
+					System.out.printf("Solution path length = %d\n", node.getDepth());
+					System.out.printf("Solution path cost = %d\n", node.getPathCost());
+					System.out.printf("# Expanded nodes = %d\n", expandedNodes);
 				}
 				return;
 			}
