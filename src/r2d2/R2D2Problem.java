@@ -27,6 +27,14 @@ public class R2D2Problem extends Problem{
 		initializeOperators();
 	}
 
+	public R2D2Problem(char[][] grid) {
+
+		this.grid = grid;
+		this.n = grid.length;
+		this.m = grid[0].length;
+		initializeOperators();
+	}
+
 	private void initializeGrid(int n, int m)
 	{
 		grid = new char[this.n][this.m];
@@ -84,10 +92,6 @@ public class R2D2Problem extends Problem{
 		return ret.toString();
 	}
 
-	public char[][] getGrid() { return grid; }
-
-	public int[] getDimensions() { return new int[] { n, m }; }
-
 	@Override
 	public ArrayList<Operator> getOperators() { return operators; }
 
@@ -103,7 +107,7 @@ public class R2D2Problem extends Problem{
 				else if(grid[i][j] == R2D2Problem.ROCK)
 					++remRocks;
 
-		return new R2D2State(grid, robotPosition, remRocks);
+		return new R2D2State(grid, robotPosition);
 	}
 
 	@Override

@@ -14,9 +14,15 @@ public class BFS extends QueueController {
 	public boolean isEmpty() { return queue.isEmpty(); }
 
 	@Override
-	public void addFiltered(ArrayList<Node> nodes) {
+	public void add(ArrayList<Node> nodes) {
 		for(Node node: nodes)
-			queue.add(node);
+		{
+			Integer pathCost = vis.get(node.getState());
+			if(pathCost == null) {
+				vis.put(node.getState(), node.getPathCost());
+				queue.add(node);
+			}
+		}
 	}
 
 	@Override

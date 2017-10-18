@@ -19,7 +19,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter grid dimensions separated by a single space");
 		int n = sc.nextInt(), m = sc.nextInt();
-		R2D2Problem problem = new R2D2Problem(n, m);
+		R2D2Problem problem = n == -1 ? new R2D2Problem(getGridFromInput(sc)) : new R2D2Problem(n, m);
 		System.out.println("Initial Grid\n------------");
 		System.out.println(problem.getInitialState());
 		while(true)
@@ -33,6 +33,17 @@ public class Main {
 		}
 		sc.close();
 		
+	}
+
+	private static char[][] getGridFromInput(Scanner sc)
+	{
+		System.out.println("[Input Grid] Enter grid dimensions");
+		int n = sc.nextInt(), m = sc.nextInt();
+		System.out.printf("[Input Grid] Enter %d x %d grid\n", n, m);
+		char[][] grid = new char[n][];
+		for(int i = 0; i < n; ++i)
+			grid[i] = sc.next().toCharArray();
+		return grid;
 	}
 	
 	private static QueueController getController(String s)

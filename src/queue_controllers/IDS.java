@@ -24,12 +24,15 @@ public class IDS extends QueueController {
 	}
 
 	@Override
-	public void addFiltered(ArrayList<Node> nodes) {
+	public void add(ArrayList<Node> nodes) {
 		for(Node node: nodes)
-			if(node.getDepth() <= depth)
+		{
+			Integer pathCost = vis.get(node.getState());
+			if(node.getDepth() <= depth && pathCost == null) {
+				vis.put(node.getState(), node.getPathCost());
 				stack.push(node);
-			else
-				vis.remove(node.getState());
+			}
+		}
 	}
 
 	@Override

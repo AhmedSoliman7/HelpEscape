@@ -7,11 +7,14 @@ public class R2D2State extends State {
 	private Cell robotPosition;
 	private int remainingRocks;
 		
-	public R2D2State(char[][] grid, Cell robotPosition, int remainingRocks)
+	public R2D2State(char[][] grid, Cell robotPosition)
 	{
 		this.grid = grid;
 		this.robotPosition = robotPosition;
-		this.remainingRocks = remainingRocks;
+		for(char[] row: grid)
+			for(char c: row)
+				if(c == R2D2Problem.ROCK)
+					++this.remainingRocks;
 	}
 	
 	public char[][] getGrid() { return grid; }

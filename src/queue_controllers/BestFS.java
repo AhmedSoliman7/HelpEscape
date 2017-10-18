@@ -19,9 +19,6 @@ public class BestFS extends UCS {
             this.evalFunc = evalFunc;
         }
 
-        public int compare(Node x, Node y)
-        {
-            return evalFunc.apply(x) - evalFunc.apply(y);
-        }
+        public int compare(Node x, Node y) { return evalFunc.apply(x) - evalFunc.apply(y); }
     }
 }

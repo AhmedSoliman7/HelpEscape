@@ -13,9 +13,15 @@ public class DFS extends QueueController {
 	public boolean isEmpty() { return stack.isEmpty(); }
 
 	@Override
-	public void addFiltered(ArrayList<Node> nodes) {
+	public void add(ArrayList<Node> nodes) {
 		for(Node node: nodes)
-			stack.push(node);
+		{
+			Integer pathCost = vis.get(node.getState());
+			if(pathCost == null) {
+				vis.put(node.getState(), node.getPathCost());
+				stack.push(node);
+			}
+		}
 	}
 
 	@Override

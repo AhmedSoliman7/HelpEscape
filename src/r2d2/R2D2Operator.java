@@ -49,7 +49,7 @@ public class R2D2Operator extends Operator {
 		
 		// VALID MOVE !!
 		// 1. Construct new state
-		int remRocks = state.getRemainingRocks(), n = grid.length, m = grid[0].length;
+		int n = grid.length, m = grid[0].length;
 		char[][] newGrid = new char[n][m];
 		for(int i = 0; i < n; ++i)
 			for(int j = 0; j < m; ++j)
@@ -64,21 +64,16 @@ public class R2D2Operator extends Operator {
 					else if(oldC == R2D2Problem.ROCK)
 						newC = R2D2Problem.ROBOT;
 					else // oldC == R2D2Problem.PRESSURE_PAD || oldC == R2D2Problem.ROCK_ON_PRESSURE_PAD
-					{
 						newC = R2D2Problem.ROBOT_ON_PRESSURE_PAD;
-						if(oldC == R2D2Problem.ROCK_ON_PRESSURE_PAD)
-							++remRocks;
-					}
+
 				}
 				else if(i == rockX && j == rockY)
 				{
 					if(oldC == R2D2Problem.EMPTY_CELL)
 						newC = R2D2Problem.ROCK;
 					else // R2D2Problem.PRESSURE_PAD
-					{
 						newC = R2D2Problem.ROCK_ON_PRESSURE_PAD;
-						--remRocks;
-					}
+
 				}
 				else
 				{
@@ -91,7 +86,7 @@ public class R2D2Operator extends Operator {
 				}
 				newGrid[i][j] = newC;
 			}
-		State newState = new R2D2State(newGrid, newPos, remRocks);
+		State newState = new R2D2State(newGrid, newPos);
 		Node newNode = new Node(newState, node, this);
 		if(rockX != -1)
 			newNode.setPathCost(newNode.getPathCost() + ROCK_PUSH_COST);
