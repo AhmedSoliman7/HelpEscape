@@ -6,13 +6,24 @@ import java.util.Queue;
 
 import general.Node;
 
+/**
+ * Breadth-First Search
+ */
 public class BFS extends QueueController {
 
 	private Queue<Node> queue = new LinkedList<>();
-	
+
+	/**
+	 * Checks whether the queue is empty.
+	 * @return true if the queue is empty.
+	 */
 	@Override
 	public boolean isEmpty() { return queue.isEmpty(); }
 
+	/**
+	 * Adds the input expanded nodes to the queue (if they are not visited before).
+	 * @param nodes the nodes to be added to the queue.
+	 */
 	@Override
 	public void add(ArrayList<Node> nodes) {
 		for(Node node: nodes)
@@ -25,6 +36,11 @@ public class BFS extends QueueController {
 		}
 	}
 
+	/**
+	 * Removes the front of the queue which is the node chosen for relaxation.
+	 * The front of the queue in DFS is the first inserted node (FIFO).
+	 * @return the removed node.
+	 */
 	@Override
 	public Node removeFront() { return queue.remove(); }
 

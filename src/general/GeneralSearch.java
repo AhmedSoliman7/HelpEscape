@@ -3,9 +3,14 @@ import java.util.ArrayList;
 
 import queue_controllers.QueueController;
 
-public abstract class GeneralSearch {
+public class GeneralSearch {
 
-	
+	/**
+	 * Expands the input node using the list of given operators.
+ 	 * @param node the node to expand using the operators.
+	 * @param operators the operators used to expand the node.
+	 * @return the expanded nodes.
+	 */
 	private static ArrayList<Node> expand(Node node, ArrayList<Operator> operators) {
 		ArrayList<Node> expandedNodes = new ArrayList<Node>(1);
 		for(Operator operator: operators) {
@@ -15,7 +20,13 @@ public abstract class GeneralSearch {
 		}
 		return expandedNodes;
 	}
-	
+
+	/**
+	 * Searches for a solution to the input problem given a queue controller.
+	 * @param problem the problem to be solved.
+	 * @param queueController the queuing function used for node selection.
+	 * @param visualize a boolean to print the solution with some stats.
+	 */
 	public static void search(Problem problem, QueueController queueController, boolean visualize) {
 		
 		State initState = problem.getInitialState();
@@ -42,7 +53,12 @@ public abstract class GeneralSearch {
 		}
 		System.out.println("Failure :(");
 	}
-	
+
+	/**
+	 * Prints the states of the ancestors of the input node in addition to
+	 * the state of the input node.
+	 * @param node the node to print its state and its ancestors states.
+	 */
 	private static void printSolution(Node node)
 	{
 		if(node.getParent() != null)

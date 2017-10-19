@@ -1,16 +1,25 @@
 package r2d2.heuristics;
 
-import general.Problem;
 import general.functions.HeuristicFunction;
 import general.Node;
 import r2d2.Cell;
 import r2d2.R2D2Problem;
 import r2d2.R2D2State;
 
-// Furthest Rock if exists otherwise, distance to teleport
-
+/**
+ * Heuristic Function for R2D2 Problem. The heuristic cost of a node
+ * is the Manhattan distance between the robot position and the position
+ * of the furthest rock.
+ * h(node) = max[r: unmatched rock]{L1(robot, r)}
+ */
 public class FurthestRockHeuristicFunction extends HeuristicFunction {
 
+    /**
+     * Applys the heuristic function to the input node.
+     *
+     * @param node: the node to which the heuristic function is applied.
+     * @return the heuristic cost of the node.
+     */
     @Override
     public Integer apply(Node node) {
         R2D2State state = (R2D2State) node.getState();

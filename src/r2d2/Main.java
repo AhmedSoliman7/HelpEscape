@@ -12,8 +12,33 @@ import r2d2.heuristics.FurthestRockHeuristicFunction;
 import r2d2.heuristics.RemainingRocksHeuristicFunction;
 import r2d2.heuristics.RockPadMatchingHeuristicFunction;
 
+/**
+ * Run everything from here :)
+ */
 public class Main {
 
+	/**
+	 * Main function.
+	 *
+	 * Takes grid dimensions from the user and generates the problem
+	 * based on these dimensions. If the input dimensions are -1 -1, the user is
+	 * allowed to enter the grid manually.
+	 *
+	 * After grid initializations, the user is allowed to make multiple runs for
+	 * different search strategies. Available search strategies are:
+	 * 1. Breadth-First Search => BF
+	 * 2. Depth-First Search => DF
+	 * 3. Iterative-Deepening Search => ID
+	 * 4. Uniform-Cost Search => UC
+	 * 5. Greedy Search with 3 different heuristics => GRi, i = {1, 2, 3}
+	 * 6. A* Search with 3 different heuristics => ARi, i = {1, 2, 3}
+	 *
+	 * Available heuristics:
+	 * 1. The number of unmatched rocks multiplied by the push cost.
+	 * 2. The Manhattan distance from the robot to the furthest rock.
+	 * 3. The sum of Manhattan distances from each unmatched rock to
+	 * the nearest pad to it multiplied by the push cost.
+	 */
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -35,6 +60,11 @@ public class Main {
 		
 	}
 
+	/**
+	 * Constructs a grid from the input (manually).
+	 * @param sc the input reader.
+	 * @return the constructed grid.
+	 */
 	private static char[][] getGridFromInput(Scanner sc)
 	{
 		System.out.println("[Input Grid] Enter grid dimensions");
@@ -45,7 +75,13 @@ public class Main {
 			grid[i] = sc.next().toCharArray();
 		return grid;
 	}
-	
+
+	/**
+	 * Creates an instance of the search strategy / queuing function
+	 * used as defined by the user.
+	 * @param s the code of the queue controller to be instantiated.
+	 * @return the constructed queue controller.
+	 */
 	private static QueueController getController(String s)
 	{
 		if(s.equals("BF"))			//Breadth-First Search
@@ -62,6 +98,11 @@ public class Main {
 		return new BestFS(evalFunc);
 	}
 
+	/**
+	 * Creates an evaluation function as defined by the input string.
+	 * @param s the code of the evaluation and heuristic functions.
+	 * @return the constructed evaluation function.
+	 */
 	private static EvaluationFunction getEvaluationFunction(String s)
 	{
 		HeuristicFunction heurFunc = getHeuristicFunction(s);
@@ -72,6 +113,11 @@ public class Main {
 		return null;
 	}
 
+	/**
+	 * Creates an evaluation function as defined by the input string.
+	 * @param s the code of the evaluation and heuristic functions.
+	 * @return the constructed heuristic function.
+	 */
 	private static HeuristicFunction getHeuristicFunction(String s)
 	{
 		if(s.charAt(s.length() - 1) == '1')
