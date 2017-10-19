@@ -2,11 +2,11 @@ package r2d2;
 
 import java.util.Scanner;
 
-import general.functions.AStarEvaluationFunction;
-import general.functions.EvaluationFunction;
-import general.functions.GreedyEvaluationFunction;
-import general.functions.HeuristicFunction;
-import general.GeneralSearch;
+import functions.AStarEvaluationFunction;
+import functions.EvaluationFunction;
+import functions.GreedyEvaluationFunction;
+import functions.HeuristicFunction;
+import generic.GeneralSearch;
 import queue_controllers.*;
 import r2d2.heuristics.FurthestRockHeuristicFunction;
 import r2d2.heuristics.RemainingRocksHeuristicFunction;
@@ -85,17 +85,17 @@ public class Main {
 	private static QueueController getController(String s)
 	{
 		if(s.equals("BF"))			//Breadth-First Search
-			return new BFS();
+			return new BreadthFirstSearch();
 		if(s.equals("DF"))			//Depth-First Search
-			return new DFS();
+			return new DepthFirstSearch();
 		if(s.equals("ID"))			//Iterative-Deepening Search
-			return new IDS();
+			return new IterativeDeepeningSearch();
 		if(s.equals("UC"))			//Uniform-Cost Search
-			return new UCS();
+			return new UniformCostSearch();
 
 		// Best-First Search
 		EvaluationFunction evalFunc = getEvaluationFunction(s);
-		return new BestFS(evalFunc);
+		return new BestFirstSearch(evalFunc);
 	}
 
 	/**
