@@ -15,10 +15,10 @@ import r2d2.heuristics.RockPadMatchingHeuristicFunction;
 /**
  * Run everything from here :)
  */
-public class Main {
+public class R2D2Search {
 
 	/**
-	 * Main function.
+	 * R2D2Search function.
 	 *
 	 * Takes grid dimensions from the user and generates the problem
 	 * based on these dimensions. If the input dimensions are -1 -1, the user is

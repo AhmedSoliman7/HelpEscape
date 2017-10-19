@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import general.Node;
+import generic.Node;
 
 /**
  * Breadth-First Search
  */
-public class BFS extends QueueController {
+public class BreadthFirstSearch extends QueueController {
 
 	private Queue<Node> queue = new LinkedList<>();
 
@@ -38,7 +38,7 @@ public class BFS extends QueueController {
 
 	/**
 	 * Removes the front of the queue which is the node chosen for relaxation.
-	 * The front of the queue in DFS is the first inserted node (FIFO).
+	 * The front of the queue in DepthFirstSearch is the first inserted node (FIFO).
 	 * @return the removed node.
 	 */
 	@Override

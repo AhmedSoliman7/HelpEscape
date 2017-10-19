@@ -1,30 +1,29 @@
 package queue_controllers;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import general.Node;
-import general.comparators.NodeComparator;
-import general.comparators.UninformedNodeComparator;
+import generic.Node;
+import comparators.NodeComparator;
+import comparators.UninformedNodeComparator;
 
 /**
  * Uniform-Cost Search
  */
-public class UCS extends QueueController {
+public class UniformCostSearch extends QueueController {
 
 	private PriorityQueue<Node> queue;
 	private NodeComparator nodeComparator;
 	/**
 	 * Constructs a uniform-cost queue controller based on the default comparator function.
 	 */
-	public UCS() { this(new UninformedNodeComparator()); }
+	public UniformCostSearch() { this(new UninformedNodeComparator()); }
 
 	/**
 	 * Constructs a uniform-cost queue controller based on the comparator function.
 	 * @param comp the comparator to be used for cost comparison.
 	 */
-	protected UCS(NodeComparator comp) { queue = new PriorityQueue<>(nodeComparator = comp); }
+	protected UniformCostSearch(NodeComparator comp) { queue = new PriorityQueue<>(nodeComparator = comp); }
 
 	/**
 	 * Checks whether the queue is empty.

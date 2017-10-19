@@ -1,6 +1,6 @@
-package general.functions;
+package functions;
 
-import general.Node;
+import generic.Node;
 
 /**
  * Abstract class for the heuristic function.

@@ -1,6 +1,6 @@
-package general.comparators;
+package comparators;
 
-import general.Node;
+import generic.Node;
 
 import java.util.Comparator;
 

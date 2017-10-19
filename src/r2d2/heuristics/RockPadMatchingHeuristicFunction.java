@@ -1,7 +1,7 @@
 package r2d2.heuristics;
 
-import general.Node;
-import general.functions.HeuristicFunction;
+import generic.Node;
+import functions.HeuristicFunction;
 import r2d2.Cell;
 import r2d2.R2D2Operator;
 import r2d2.R2D2Problem;

@@ -1,7 +1,7 @@
-package general.comparators;
+package comparators;
 
-import general.Node;
-import general.functions.EvaluationFunction;
+import generic.Node;
+import functions.EvaluationFunction;
 
 /**
  * A comparator of nodes for best-first search.

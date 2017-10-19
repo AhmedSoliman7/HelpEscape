@@ -1,5 +1,5 @@
 package r2d2;
-import general.State;
+import generic.State;
 
 public class R2D2State extends State {
 	

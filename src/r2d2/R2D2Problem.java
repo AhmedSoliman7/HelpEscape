@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import general.Operator;
-import general.Problem;
-import general.State;
+import generic.Operator;
+import generic.Problem;
+import generic.State;
 
 public class R2D2Problem extends Problem{
 

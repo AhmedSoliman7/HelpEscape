@@ -1,10 +1,9 @@
 package queue_controllers;
 import java.util.ArrayList;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
-import general.Node;
-import general.State;
+import generic.Node;
+import generic.State;
 
 /**
  * Abstract class for the Queue Controller (Search Strategy/Queuing Function)

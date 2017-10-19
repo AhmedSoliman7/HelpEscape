@@ -1,4 +1,4 @@
-package general;
+package generic;
 import java.util.ArrayList;
 
 import queue_controllers.QueueController;

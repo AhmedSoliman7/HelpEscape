@@ -1,4 +1,4 @@
-package general;
+package generic;
 
 public class Node {
 
@@ -35,6 +35,9 @@ public class Node {
 	 */
 	public Node getParent() { return parent; }
 
+	/**
+	 * @return the operator used to reach this node.
+	 */
 	public Operator getOperator() { return operator; }
 
 	/**

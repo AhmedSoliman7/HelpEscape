@@ -3,12 +3,12 @@ package queue_controllers;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import general.Node;
+import generic.Node;
 
 /**
  * Depth-First Search
  */
-public class DFS extends QueueController {
+public class DepthFirstSearch extends QueueController {
 
 	private Stack<Node> stack = new Stack<>();
 
@@ -37,7 +37,7 @@ public class DFS extends QueueController {
 
 	/**
 	 * Removes the front of the queue which is the node chosen for relaxation.
-	 * The front of the queue in DFS is the last inserted node (LIFO).
+	 * The front of the queue in DepthFirstSearch is the last inserted node (LIFO).
 	 * @return the removed node.
 	 */
 	@Override

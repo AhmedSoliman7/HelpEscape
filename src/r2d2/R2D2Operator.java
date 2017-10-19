@@ -1,8 +1,8 @@
 package r2d2;
 
-import general.Node;
-import general.Operator;
-import general.State;
+import generic.Node;
+import generic.Operator;
+import generic.State;
 
 public class R2D2Operator extends Operator {
 

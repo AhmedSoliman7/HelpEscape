@@ -1,6 +1,6 @@
-package general.functions;
+package functions;
 
-import general.Node;
+import generic.Node;
 
 public class GreedyEvaluationFunction extends EvaluationFunction {
 

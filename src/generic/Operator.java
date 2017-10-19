@@ -1,4 +1,4 @@
-package general;
+package generic;
 
 /**
  * Abstract Operator class.

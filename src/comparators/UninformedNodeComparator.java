@@ -1,6 +1,6 @@
-package general.comparators;
+package comparators;
 
-import general.Node;
+import generic.Node;
 
 /**
  * A comparator of nodes for uniform cost search.

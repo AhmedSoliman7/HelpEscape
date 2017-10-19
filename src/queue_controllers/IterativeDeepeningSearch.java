@@ -3,14 +3,14 @@ package queue_controllers;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import general.Node;
+import generic.Node;
 
 /**
  * Iterative-Deepening Search
  */
-public class IDS extends QueueController {
+public class IterativeDeepeningSearch extends QueueController {
 
-	private static final int MAX_DEPTH = 100;
+	private static final int MAX_DEPTH = 1_000_000_000;
 	private Stack<Node> stack = new Stack<>();
 	private int depth = 0;
 
@@ -52,7 +52,7 @@ public class IDS extends QueueController {
 
 	/**
 	 * Removes the front of the queue which is the node chosen for relaxation.
-	 * The front of the queue in IDS is the last inserted node (LIFO)
+	 * The front of the queue in IterativeDeepeningSearch is the last inserted node (LIFO)
 	 * @return the removed node.
 	 */
 	@Override

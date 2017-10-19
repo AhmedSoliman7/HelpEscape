@@ -1,4 +1,4 @@
-package general;
+package generic;
 
 import java.util.ArrayList;
 
@@ -8,8 +8,6 @@ import java.util.ArrayList;
 public abstract class Problem {
 
 	protected ArrayList<Operator> operators;
-	
-	protected State initialState;
 
 	/**
 	 * @return the operators of the problem.
